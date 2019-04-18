@@ -4,7 +4,8 @@ Learnt from [Here](https://github.com/in28minutes/spring-microservices/tree/mast
 
 ## Contents
 ... This project contains 3 modules right now.
-| Modules        | Description           |
+
+| Modules        | Description  |
 | ------------- |:-------------:|
 | limits-service  | Connects to the spring-cloud-config-service to retrieve the 'limits-services' configurations based on active profile |
 | spring-cloud-config-server | Defines the 'limits-service' configurations based on profiles  |
