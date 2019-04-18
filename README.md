@@ -4,8 +4,10 @@ Learnt from [Here](https://github.com/in28minutes/spring-microservices/tree/mast
 
 ## Contents
 ... This project contains 3 modules right now.
+
 | Modules        | Description           |
 | ------------- |:-------------:|
-| limits-service  | Connects to the spring-cloud-config-service to retrieve the 'limits-services' configurations based on active profile |
-| spring-cloud-config-server | Defines the 'limits-service' configurations based on profiles  |
-| currency-exchange-service | Queries conversion rate from JPA & returns back from, to, id and conversionMultiple along with the active port # |
+| `limits-service`  | Connects to the spring-cloud-config-service to retrieve the 'limits-services' configurations based on active profile |
+| `spring-cloud-config-server` | Defines the 'limits-service' configurations based on profiles  |
+| `currency-exchange-service` | Queries conversion rate from JPA & returns back from, to, id and conversionMultiple along with the active port # |
+| `currency-conversion-service` | calls the conversion-exchange-service GET api and returns the converted currency value |
