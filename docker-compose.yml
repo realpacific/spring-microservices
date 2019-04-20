@@ -1,16 +1,55 @@
 version: '3'
 services:
+  naming:
+    build: ./netflix-eureka-naming-server
+    ports:
+      - 8761:8761
+    healthcheck:
+        test: ["CMD", "curl", "-f", "http://localhost:8761/eureka"]
+        interval: 10s
+        timeout: 50s
+        retries: 5
+
   config:
     build: ./spring-cloud-config-server
+    depends_on:
+      - naming
     ports:
       - 8888:8888
 
+  zuul:
+    build: ./zuul-api-gateway-server
+    depends_on: 
+      - config
+    ports:
+      - 8765:8765
+
   limits:
     build: ./limits-service
+    depends_on:
+      - zuul 
     ports:
       - 8080:8080
 
-  currency-exchange:
+  currency-exchange-1:
     build: ./currency-exchange-service
+    command: -Dserver.port=8000
+    depends_on:
+      - zuul
     ports:
       - 8000:8000
+
+  currency-exchange-2:
+    build: ./currency-exchange-service
+    command: -Dserver.port=8001
+    depends_on:
+      - zuul
+    ports:
+      - 8001:8001
+
+  currency-conversion:
+    build: ./currency-conversion-service
+    depends_on:
+      - zuul
+    ports:
+      - 8100:8100

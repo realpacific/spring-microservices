@@ -8,7 +8,7 @@ LABEL maintainer="prashantbarahi@gmail.com"
 VOLUME /tmp
 
 # Make port 8080 available to the world outside this container
-EXPOSE 8000
+EXPOSE 8000 8001
 
 # The application's jar file
 ARG JAR_FILE_CURRENCY=target/currency-exchange-service-0.0.1-SNAPSHOT.jar
